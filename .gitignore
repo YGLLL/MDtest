@@ -1,9 +1,15 @@
 *.iml
-.gradle
 /local.properties
-/.idea/workspace.xml
-/.idea/libraries
 .DS_Store
+.externalNativeBuild
+
+# Android Studio
+/.idea/
+/.gradle
+/local.properties
 /build
 /captures
-.externalNativeBuild
+*.iml
+*.iws
+*.ipr
+*.swp

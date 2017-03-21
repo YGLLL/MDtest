@@ -18,6 +18,7 @@
         <activity
             android:name=".ItemActivity">
         </activity>
+        <service android:name=".PlayMusic"></service>
     </application>
 
 </manifest>

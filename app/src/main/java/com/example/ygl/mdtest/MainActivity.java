@@ -1,5 +1,8 @@
 package com.example.ygl.mdtest;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -12,9 +15,12 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.ygl.mdtest.model.Tf;
@@ -22,6 +28,8 @@ import com.example.ygl.mdtest.model.Tf;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import static com.example.ygl.mdtest.R.attr.colorPrimary;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
@@ -59,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent=new Intent(this,PlayMusic.class);
+        startService(intent);
 
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -167,5 +177,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.i("xxx","Activice onDestroy");
+        Intent intent=new Intent(this,PlayMusic.class);
+        stopService(intent);
     }
 }
