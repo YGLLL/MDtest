@@ -1,5 +1,6 @@
 package com.example.ygl.mdtest;
 
+import android.bluetooth.BluetoothClass;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -14,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -39,35 +41,35 @@ public class MainActivity extends AppCompatActivity {
     private TfAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private Tf[] tfs={
-            new Tf("1",R.drawable.a1),
-            new Tf("2",R.drawable.a2),
-            new Tf("3",R.drawable.a3),
-            new Tf("4",R.drawable.a4),
-            new Tf("5",R.drawable.a5),
-            new Tf("6",R.drawable.a6),
-            new Tf("7",R.drawable.a7),
-            new Tf("8",R.drawable.a8),
-            new Tf("9",R.drawable.a9),
-            new Tf("10",R.drawable.a10),
-            new Tf("11",R.drawable.a11),
-            new Tf("12",R.drawable.a12),
-            new Tf("13",R.drawable.a13),
-            new Tf("14",R.drawable.a14),
-            new Tf("15",R.drawable.a15),
-            new Tf("16",R.drawable.a16),
-            new Tf("17",R.drawable.a17),
-            new Tf("18",R.drawable.a18),
-            new Tf("19",R.drawable.a19),
-            new Tf("20",R.drawable.a20),
-            new Tf("21",R.drawable.a21),
-            new Tf("22",R.drawable.a22),
-            new Tf("23",R.drawable.a23),
-            new Tf("24",R.drawable.a24),};
+            new Tf(R.drawable.a1),
+            new Tf(R.drawable.a2),
+            new Tf(R.drawable.a3),
+            new Tf(R.drawable.a4),
+            new Tf(R.drawable.a5),
+            new Tf(R.drawable.a6),
+            new Tf(R.drawable.a7),
+            new Tf(R.drawable.a8),
+            new Tf(R.drawable.a9),
+            new Tf(R.drawable.a10),
+            new Tf(R.drawable.a11),
+            new Tf(R.drawable.a12),
+            new Tf(R.drawable.a13),
+            new Tf(R.drawable.a14),
+            new Tf(R.drawable.a15),
+            new Tf(R.drawable.a16),
+            new Tf(R.drawable.a17),
+            new Tf(R.drawable.a18),
+            new Tf(R.drawable.a19),
+            new Tf(R.drawable.a20),
+            new Tf(R.drawable.a21),
+            new Tf(R.drawable.a22),
+            new Tf(R.drawable.a23),
+            new Tf(R.drawable.a24),};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent=new Intent(this,PlayMusic.class);
+        Intent intent=new Intent(this,MusicService.class);
         startService(intent);
 
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
@@ -105,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         init();
         RecyclerView recyclerView=(RecyclerView)findViewById(R.id.recyler_view);
-        GridLayoutManager layoutManager=new GridLayoutManager(this,2);
+        StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         adapter=new TfAdapter(tfList);
         recyclerView.setAdapter(adapter);
@@ -182,8 +184,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        Log.i("xxx","Activice onDestroy");
-        Intent intent=new Intent(this,PlayMusic.class);
+        Intent intent=new Intent(this,MusicService.class);
         stopService(intent);
     }
 }

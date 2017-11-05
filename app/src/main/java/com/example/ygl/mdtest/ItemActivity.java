@@ -6,8 +6,6 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,14 +23,17 @@ public class ItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle s){
         super.onCreate(s);
-        setContentView(R.layout.itemactivity_layout);
+        setContentView(R.layout.item_activity_layout);
+
         Intent intent=getIntent();
         String string=intent.getStringExtra(name);
         int i=intent.getIntExtra(imageid,-1);
+
         Toolbar toolbar=(Toolbar) findViewById(R.id.itemToolbar);
         CollapsingToolbarLayout collapsingToolbarLayout=(CollapsingToolbarLayout)findViewById(R.id.collapsing_layout);
         ImageView imageView=(ImageView)findViewById(R.id.toolbar_image);
         TextView textView=(TextView)findViewById(R.id.tfString);
+
         setSupportActionBar(toolbar);
         ActionBar actionBar=getSupportActionBar();
         if (actionBar!=null){

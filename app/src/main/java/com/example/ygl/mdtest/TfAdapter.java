@@ -26,12 +26,10 @@ public class TfAdapter extends RecyclerView.Adapter<TfAdapter.ViewHolder>{
     static class ViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
         ImageView tfView;
-        TextView name;
         public ViewHolder(View view){
             super(view);
             cardView=(CardView)view;
             tfView=(ImageView)view.findViewById(R.id.tf_image);
-            name=(TextView)view.findViewById(R.id.name);
         }
     }
 
@@ -52,7 +50,7 @@ public class TfAdapter extends RecyclerView.Adapter<TfAdapter.ViewHolder>{
                 int i=viewHolder.getAdapterPosition();
                 Tf tf=mtfList.get(i);
                 Intent intent=new Intent(mcontext,ItemActivity.class);
-                intent.putExtra(ItemActivity.name,tf.getName());
+                intent.putExtra(ItemActivity.name,"TF");
                 intent.putExtra(ItemActivity.imageid,tf.getImageId());
                 mcontext.startActivity(intent);
             }
@@ -63,7 +61,6 @@ public class TfAdapter extends RecyclerView.Adapter<TfAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(ViewHolder holder,int position){
         Tf tf=mtfList.get(position);
-        holder.name.setText(tf.getName());
         Glide.with(mcontext).load(tf.getImageId()).into(holder.tfView);
     }
    @Override

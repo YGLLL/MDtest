@@ -5,17 +5,10 @@ package com.example.ygl.mdtest.model;
  */
 
 public class Tf {
-    private String name;
     private int imageId;
-    public Tf(String name,int imageId){
-        this.name=name;
+    public Tf(int imageId){
         this.imageId=imageId;
     }
-
-    public String getName() {
-        return name;
-    }
-
     public int getImageId() {
         return imageId;
     }
